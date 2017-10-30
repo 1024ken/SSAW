@@ -1,0 +1,187 @@
+// Place all the styles related to the blogs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.col-md-6.col-md-offset-3.col-sm-10.col-sm-offset-1-blog{
+  margin-top: 80px;
+}
+
+.col-md-6.col-md-offset-3.col-sm-10.col-sm-offset-1 {
+  margin-top: 140px;
+}
+
+.square_btn {
+    width: 172px;
+    height: 37px;
+    margin-top: 10px;
+    padding-top: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 20px;
+display: inline-block;
+text-decoration: none;
+color: #67c5ff;
+border: solid 2px #67c5ff;
+border-radius: 3px;
+transition: .4s;
+}
+.square_btn:hover {
+background: #67c5ff;
+text-decoration: none;
+color: white;
+}
+
+.row-blogs {
+    margin-top: 10px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    height: 100%;
+    margin-bottom: 20px;
+    background-color: #F0F8FF;
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.wrapper.col-md-8.col-md-offset-2.col-sm-10 {
+    margin-top: 150px;
+}
+
+.wrapper {
+  margin-bottom: 74px;
+  padding: 20px 20px 20px 35px;
+  .row {
+    border-bottom: 1px solid #ccc;
+    padding: 20px;
+    text-align: left;
+    word-wrap: break-word;
+  }
+}
+input[type="submit"].btn-block{
+  margin: 15px 0;
+}
+
+.container {
+  padding-bottom: 85px;
+}
+
+.new_blog.new_blog {
+    margin-top: 30px;
+}
+
+.blog.buttun {
+    margin-top: -6%;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.btn.btn-primary.btn-block-confirm {
+    width: 126px;
+}
+
+.img.src-picture {
+    width: 76%;
+    height: 54%;
+    margin-left: 12%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.left-comment {
+  font-size: 18px
+}
+
+.left {
+  margin-left: 10%;
+}
+
+.right {
+  margin-right: 41%;
+}
+
+.box24 {
+    position: relative;
+    padding: 0.5em 0.7em;
+    margin: 2em 0;
+    background: #e6f4ff;
+    border-radius: 2px;
+    color: #696969;
+    font-weight: bold;
+}
+.box24:after {
+    position: absolute;
+    content: '';
+    top: 100%;
+    left: 30px;
+    border: 15px solid transparent;
+    border-top: 15px solid #e6f4ff;
+    width: 0;
+    height: 0;
+}
+
+.box23 {
+position: relative;
+width: 130px;
+padding: 8px 15px;
+background: #e4fcff;
+border-radius: 30px;
+}
+.box23:before{font-family: FontAwesome;
+content: "\f111";
+position: absolute;
+font-size: 15px;
+right: -26px;
+top: 65px;
+color: #e4fcff;
+}
+.box23:after{
+font-family: FontAwesome;
+content: "\f111";
+position: absolute;
+font-size: 23px;
+right: -16px;
+bottom: 0;
+color: #e4fcff;
+}
+.box23 p {
+margin: 0;
+padding: 0;
+}
+
+.comment.actions {
+  font-size: 15px;
+  margin-top: 10px;
+  background-color: #fff;
+  margin-left: 39%;
+  width: 86px;
+  height: 29px;
+}
+
+.title-confirm {
+  font-size: 18px;
+  padding: 5px;
+  margin-top: 5px;
+  margin-buttom: 5px;
+  color: #474747;
+  background: #f0f7ff;/*背景色*/ border-left: double 7px #5b8bd0;/*左線*/ border-right: double 7px #5b8bd0;/*右線*/ }
+.box7 p {
+  margin: 0;
+  padding: 0;
+}
+
+.content-confirm{
+  font-size: 18px;
+  padding: 5px;
+  margin-top: 5px;
+  margin-buttom: 5px;
+  color: #474747;
+  background: #f0f7ff;/*背景色*/ border-left: double 7px #5b8bd0;/*左線*/ border-right: double 7px #5b8bd0;/*右線*/ }
+.box7 p {
+  margin: 0;
+  padding: 0;
+}
+
+.image-confirm {
+  width: 80%;
+  height: 80%;
+  margin-left: 12%;
+}
