@@ -46,9 +46,9 @@ gem 'bootstrap_form'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'pry-rails'
 gem 'pry-byebug'
-
+gem 'pry-doc'
 gem 'jquery-rails'
-
+gem 'jquery-turbolinks'
 gem 'rails_12factor'
 gem 'pusher'
 gem 'elasticsearch-rails'
@@ -61,6 +61,8 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :development do

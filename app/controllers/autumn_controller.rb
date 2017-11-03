@@ -1,0 +1,2 @@
+class AutumnController < ApplicationController
+end

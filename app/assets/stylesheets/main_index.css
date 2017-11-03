@@ -1,9 +1,5 @@
 .container-index {
     height: 1150px;
-    margin-top: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-bottom: 5px;
     margin-top: 88px;
 }
 
@@ -13,12 +9,10 @@
 }
 
 .col-md-6.portfolio-item {
-	float: left;
-	display: block;
     margin-top: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-bottom: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-bottom: 5px;
 }
 
 .box{
@@ -26,21 +20,23 @@
 }
 
 .row-quarter {
-    width: 700px;
-    height: 538px;
+    width: 690px
+    height: 640px;
 }
 
 .btn-group {
-	width: 90%;
+    margin-right: 64%;
     height: 40px;
-    margin-top: -80px;
+    margin-top: -73px;
+    background-color: #F0F8FF;
 }
 
 .btn.btn-default-main {
     font-family: "ＭＳ P明朝",serif;
-    height: 45px;
-    background-color: #F0F8FF;
+	height: 45px;
+	background-color: #F0F8FF;
     border-color: #ccc;
+    display: inline-block;
     padding: 0.5em 1em;
     text-decoration: none;
     border-bottom: solid 4px #C0C0C0;
@@ -49,8 +45,9 @@
 
 .btn.btn-default.dropdown-toggle {
     font-family: "ＭＳ P明朝",serif;
-    height: 45px;
+	height: 45px;
     background-color: #F0F8FF;
+    display: inline-block;
     text-decoration: none;
     border-bottom: solid 4px #C0C0C0;
     border-radius: 5px;

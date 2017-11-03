@@ -1,0 +1,2 @@
+class WinterController < ApplicationController
+end
