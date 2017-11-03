@@ -4,7 +4,7 @@
     padding-left: 5px;
     padding-right: 5px;
     margin-bottom: 5px;
-/*    margin-top: 88px;*/
+    margin-top: 88px;
 }
 
 .col-lg-12-main {
@@ -31,9 +31,9 @@
 }
 
 .btn-group {
-	width: 180%;
+	width: 90%;
     height: 40px;
-    margin-top: -54px;
+    margin-top: -80px;
 }
 
 .btn.btn-default-main {
@@ -49,8 +49,6 @@
 
 .btn.btn-default.dropdown-toggle {
     font-family: "ＭＳ P明朝",serif;
-    padding-left: 2px;
-    padding-right: 2px;
     height: 45px;
     background-color: #F0F8FF;
     text-decoration: none;

@@ -34,13 +34,13 @@ header {
 }
 
 .navbar-brand {
-/*  margin-left: 44%;*/
+  margin-left: 41%;
   margin-top: 17px;
   font-size: 65px;
   font-family: cursive;
   text-decoration: none;
   color: #0000CD;
-  text-shadow: -10px 10px 0px rgba(10, 10, 10, 0.32), 0px 0px 0px #777, 0px 0px 0px #777, 0px 0px 0px #777;
+  text-shadow: -10px 10px 0px rgba(10, 10, 10, 0.32), 0px 0px 0px , 0px 0px 0px #777, 0px 0px 0px #777;
 .navbar-brand:active {
   top: 4px;
   box-shadow: none;
