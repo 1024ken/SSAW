@@ -498,9 +498,9 @@ h3:before, h3:after{
   height: calc(100% + 14px);
   background-color: #0000FF;
 }
+
 h3:before {left: 7px;}
 h3:after {right: 7px;}
-}
 
 form-control {
   font-family: "ＭＳ P明朝",serif;
