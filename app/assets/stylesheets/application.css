@@ -85,6 +85,14 @@ body {
     width: 92px;
 }
 
+.alert.alert-success {
+
+}
+
+.alert.alert-danger {
+
+}
+
 ol.topic-path {
 margin-left: 1000px;
 padding: 17px 0px;

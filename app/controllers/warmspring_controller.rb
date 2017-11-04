@@ -1,5 +1,6 @@
 class WarmspringController < ApplicationController
   before_action :set_warmspring, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def index
     @warmsprings = Warmspring.all
@@ -23,10 +24,10 @@ class WarmspringController < ApplicationController
       # format.html { redirect_to @warmspring, notice: 'warmspring was successfully created.' }
       #     format.json { render :show, status: :created, location: @blog }
       redirect_to warmspring_index_path, notice: "ブログを作成しました！"
-      #   else
+    else
       #     format.html { render :new }
       #     format.json { render json: @blog.errors, status: :unprocessable_entity }
-      # render 'new'
+      render 'new'
       # end
     end
   end

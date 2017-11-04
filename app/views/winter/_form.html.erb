@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+<%= form_for(@winter, url: choose_new_or_edit_winter) do |f| %>
+  <% if @winter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @winter.errors.count %>件のエラーがあります。</h2>
+      <ul>
+        <% @winter.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <br>
+  <%= f.submit %>
+<% end %>
+<%= link_to "ブログ一覧画面にもどる", winter_index_path %>

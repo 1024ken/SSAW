@@ -44,6 +44,6 @@
       </div>
     <% end %>
     <p> <%= button_to "アカウントを削除してもいいですか?", registration_path(resource_name), data: { confirm: "本当に削除しますか?" }, method: :delete, notice: "アカウントを削除しました！", class: "btn btn-default btn-sm btn btn-danger-delete" %></p>
-    <%= link_to "戻る", new_user_session_path, class: "btn btn-default btn-sm" %>
+    <%= link_to "戻る", seasons_path, class: "btn btn-default btn-sm" %>
   </div>
 </div>
