@@ -1,6 +1,5 @@
 .container-index {
     height: 1150px;
-    margin-top: 88px;
 }
 
 .col-lg-12-main {
@@ -9,7 +8,6 @@
 }
 
 .col-md-6.portfolio-item {
-    margin-top: 5px;
     padding-left: 3px;
     padding-right: 3px;
     margin-bottom: 5px;
@@ -20,8 +18,6 @@
 }
 
 .row-quarter {
-    width: 690px;
-    height: 640px;
 }
 
 .btn-group {

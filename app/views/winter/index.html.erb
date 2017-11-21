@@ -1,24 +1,34 @@
 <div class="container">
   <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1-blog">
     <p id="notice"><%= notice %></p>
-    <!--     <div class=blog main> -->
-    <h1>投稿一覧</h1>
-  </div>
-  <% @winters.each do |winter| %>
-    <!--       <div class="box23">
+    <div class=blog main>
+      <h1>投稿一覧</h1>
+      <%= link_to "写真を投稿する", new_winter_path, class: 'square_btn' %>
+    </div>
+    <% @winters.each do |winter| %>
+      <div class="box23">
         <p>気に入ったら、⭐️ボタンを押してね！</p>
-      </div> -->
-    <!--       <div class="row-blogs"> -->
-    <p>タイトル:<%= winter.title %></p>
-    <!--         <div class="img src-picture">
-        </div> -->
-    <p>説明:<%= winter.content %></p>
-    <!--         <div class="blog buttun"> -->
-    <%= link_to "編集", edit_winter_path(winter.id), class: 'btn btn-default btn-sm btn-primary', data: { confirm: '本当に編集してもいいですか？' } %>
-    <%= link_to "削除", winter_path(winter.id), method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: 'btn btn-default btn-sm btn btn-danger' %>
-    <!--         </div> -->
-    <!--       </div> -->
-  <% end %>
-</div>
-</div>
-<%= link_to 'ブログを作成する', new_winter_path %>
+      </div>
+      <div class="row-blogs">
+        <p>名前:<%= winter.user.name%></p>
+        <p>タイトル:<%= winter.title %></p>
+        <div class="img src-picture">
+          <%#= link_to top5_blogs_path do %>
+            <%= image_tag winter.image %>
+            <%# end %>
+          </div>
+          <p>説明:<%= winter.content %></p>
+          <div class="blog buttun">
+            <% if current_user == winter.user %>
+              <%= link_to "編集", edit_winter_path(winter.id), class: 'btn btn-default btn-sm btn-primary', data: { confirm: '本当に編集してもいいですか？' } %>
+              <%= link_to "削除", winter_path(winter.id), method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: 'btn btn-default btn-sm btn btn-danger' %>
+            <% end %>
+          </div>
+        </div>
+        <div id="comments_area<%= winter.id %>">
+          <%= render partial: 'winter_comments/index', locals: { comments: winter.winter_comments, winter: winter } %>
+        </div>
+        <%= render partial: 'winter_comments/form', locals: { comment: winter.winter_comments.build, winter: winter } %>
+      <% end %>
+    </div>
+  </div>

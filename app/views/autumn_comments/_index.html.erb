@@ -1,0 +1,16 @@
+<div class= warmspring_comment>
+  <ul>
+    <% comments.each do |autumn_comment| %>
+      <% unless autumn_comment.id.nil? %>
+        <p class="left-comment"><%= autumn_comment.user.name %>さんがコメントしました。</p>
+        <p class="left"><%= autumn_comment.content %></p>
+        <% if current_user.id == autumn_comment.user.id %>
+          <div class="right-comment">
+            <%= link_to '編集', edit_autumn_autumn_comment_path(autumn, autumn_comment), class: "btn btn-default btn-sm btn-primary" %>
+            <%= link_to '削除', autumn_autumn_comment_path(autumn, autumn_comment), class: "btn btn-default btn-sm btn btn-danger", method: :delete, remote: true, data: { confirm: '本当に削除してもいいですか？' } %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

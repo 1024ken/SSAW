@@ -1,0 +1,16 @@
+<div class= warmspring_comment>
+  <ul>
+    <% comments.each do |warmspring_comment| %>
+      <% unless warmspring_comment.id.nil? %>
+        <p class="left-comment"><%= warmspring_comment.user.name %>さんがコメントしました。</p>
+        <p class="left"><%= warmspring_comment.content %></p>
+        <% if current_user.id == warmspring_comment.user.id %>
+          <div class="right-comment">
+            <%= link_to '編集', edit_warmspring_warmspring_comment_path(warmspring, warmspring_comment), class: "btn btn-default btn-sm btn-primary" %>
+            <%= link_to '削除', warmspring_warmspring_comment_path(warmspring, warmspring_comment), class: "btn btn-default btn-sm btn btn-danger", method: :delete, remote: true, data: { confirm: '本当に削除してもいいですか？' } %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

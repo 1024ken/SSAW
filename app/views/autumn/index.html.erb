@@ -1,24 +1,34 @@
 <div class="container">
   <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1-blog">
     <p id="notice"><%= notice %></p>
-    <!--     <div class=blog main> -->
-    <h1>投稿一覧</h1>
-  </div>
-  <% @autumns.each do |autumn| %>
-    <!--       <div class="box23">
+    <div class=blog main>
+      <h1>投稿一覧</h1>
+      <%= link_to "写真を投稿する", new_autumn_path, class: 'square_btn' %>
+    </div>
+    <% @autumns.each do |autumn| %>
+      <div class="box23">
         <p>気に入ったら、⭐️ボタンを押してね！</p>
-      </div> -->
-    <!--       <div class="row-blogs"> -->
-    <p>タイトル:<%= autumn.title %></p>
-    <!--         <div class="img src-picture">
-        </div> -->
-    <p>説明:<%= autumn.content %></p>
-    <!--         <div class="blog buttun"> -->
-    <%= link_to "編集", edit_autumn_path(summer.id), class: 'btn btn-default btn-sm btn-primary', data: { confirm: '本当に編集してもいいですか？' } %>
-    <%= link_to "削除", autumn_path(summer.id), method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: 'btn btn-default btn-sm btn btn-danger' %>
-    <!--         </div> -->
-    <!--       </div> -->
-  <% end %>
-</div>
-</div>
-<%= link_to 'ブログを作成する', new_autumn_path %>
+      </div>
+      <div class="row-blogs">
+        <p>名前:<%= autumn.user.name%></p>
+        <p>タイトル:<%= autumn.title %></p>
+        <div class="img src-picture">
+          <%#= link_to top5_blogs_path do %>
+            <%= image_tag autumn.image %>
+            <%# end %>
+          </div>
+          <p>説明:<%= autumn.content %></p>
+          <div class="blog buttun">
+            <% if current_user == autumn.user %>
+              <%= link_to "編集", edit_autumn_path(autumn.id), class: 'btn btn-default btn-sm btn-primary', data: { confirm: '本当に編集してもいいですか？' } %>
+              <%= link_to "削除", autumn_path(autumn.id), method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: 'btn btn-default btn-sm btn btn-danger' %>
+            <% end %>
+          </div>
+        </div>
+        <div id="comments_area<%= autumn.id %>">
+          <%= render partial: 'autumn_comments/index', locals: { comments: autumn.autumn_comments, autumn: autumn } %>
+        </div>
+        <%= render partial: 'autumn_comments/form', locals: { comment: autumn.autumn_comments.build, autumn: autumn } %>
+      <% end %>
+    </div>
+  </div>

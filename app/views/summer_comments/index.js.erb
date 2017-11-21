@@ -1,0 +1,2 @@
+$("#comments_area<%= @comment.summer.id %>").html("<%= j(render 'summer_comments/index', { comments: @comment.summer.summer_comments, summer: @comment.summer }) %>")
+$(':text').val('')

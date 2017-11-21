@@ -4,9 +4,15 @@ class WarmspringController < ApplicationController
 
   def index
     @warmsprings = Warmspring.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
+    @comment = @warmspring.comments.build
+    @comments = @warmspring.comments
   end
 
   def new
@@ -18,12 +24,16 @@ class WarmspringController < ApplicationController
   end
 
   def create
-    @warmspring = Warmspring.new(warmsprings_params)
+    @warmspring = current_user.warmsprings.build(warmsprings_params)
+    if params[:cache][:image].present?
+      @warmspring.image.retrieve_from_cache! params[:cache][:image]
+    end
     # respond_to do |format|
     if @warmspring.save
       # format.html { redirect_to @warmspring, notice: 'warmspring was successfully created.' }
       #     format.json { render :show, status: :created, location: @blog }
       redirect_to warmspring_index_path, notice: "ブログを作成しました！"
+      NoticeMailer.sendmail_warmspring(@warmspring).deliver
     else
       #     format.html { render :new }
       #     format.json { render json: @blog.errors, status: :unprocessable_entity }
@@ -61,13 +71,13 @@ class WarmspringController < ApplicationController
   end
 
   def confirm
-    @warmspring = Warmspring.new(warmsprings_params)
+    @warmspring = current_user.warmsprings.build(warmsprings_params)
     render :new if @warmspring.invalid?
   end
 
   private
   def warmsprings_params
-    params.require(:warmspring).permit(:title, :content)
+    params.require(:warmspring).permit(:title, :content, :image)
   end
 
   def set_warmspring

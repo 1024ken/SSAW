@@ -4,9 +4,15 @@ class SummerController < ApplicationController
 
   def index
     @summers = Summer.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
+    @comment = @summer.comments.build
+    @comments = @summer.comments
   end
 
   def new
@@ -18,16 +24,20 @@ class SummerController < ApplicationController
   end
 
   def create
-    @summer = Summer.new(summers_params)
+    @summer = current_user.summers.build(summers_params)
+    if params[:cache][:image].present?
+      @summer.image.retrieve_from_cache! params[:cache][:image]
+    end
     # respond_to do |format|
     if @summer.save
       # format.html { redirect_to @warmspring, notice: 'warmspring was successfully created.' }
       #     format.json { render :show, status: :created, location: @blog }
       redirect_to summer_index_path, notice: "ブログを作成しました！"
-      #   else
+      NoticeMailer.sendmail_summer(@summer).deliver
+    else
       #     format.html { render :new }
       #     format.json { render json: @blog.errors, status: :unprocessable_entity }
-      # render 'new'
+      render 'new'
       # end
     end
   end
@@ -61,13 +71,13 @@ class SummerController < ApplicationController
   end
 
   def confirm
-    @summer = Summer.new(summers_params)
+    @summer = current_user.summers.build(summers_params)
     render :new if @summer.invalid?
   end
 
   private
   def summers_params
-    params.require(:summer).permit(:title, :content)
+    params.require(:summer).permit(:title, :content, :image)
   end
 
   def set_summer

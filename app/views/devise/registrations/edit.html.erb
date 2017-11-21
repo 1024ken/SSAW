@@ -9,34 +9,34 @@
       </div>
       <div class= "field-registration">
         <%= f.label :名前 %><br />
-        <%#= f.text_field :name, class: "form-control" %>
+        <%= f.text_field :name, class: "form-control" %>
       </div>
-      <%# if @user.provider.blank? %>
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
-      <div class="field-registration">
-        <%= f.label :パスワード %><br />
-        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "パスワード" %>
-        <% if @minimum_password_length %>
-          <br />
-          <em><%= @minimum_password_length %> 文字以上</em>
+      <% if @user.provider.blank? %>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
-      </div>
-      <div class="field-registration">
-        <%= f.label :パスワードの確認 %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "確認用パスワード" %>
-      </div>
-      <div class="field-registration">
-        <%= f.label :現在のパスワード %><br />
-        <%= f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "現在のパスワード" %>
-      </div>
-      <%# end %>
+        <div class="field-registration">
+          <%= f.label :パスワード %><br />
+          <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "パスワード" %>
+          <% if @minimum_password_length %>
+            <br />
+            <em><%= @minimum_password_length %> 文字以上</em>
+          <% end %>
+        </div>
+        <div class="field-registration">
+          <%= f.label :パスワードの確認 %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "確認用パスワード" %>
+        </div>
+        <div class="field-registration">
+          <%= f.label :現在のパスワード %><br />
+          <%= f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "現在のパスワード" %>
+        </div>
+      <% end %>
       <div class="field-registration img">
-        <%#= profile_img(@user) if profile_img(@user) %>
+        <%= profile_img(@user) if profile_img(@user) %>
         <div class="field-registration under">
-          <%#= f.file_field :avatar %>
-          <%#= f.hidden_field :avatar_cache %>
+          <%= f.file_field :avatar %>
+          <%= f.hidden_field :avatar_cache %>
         </div>
       </div>
       <div class="actions">

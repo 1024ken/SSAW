@@ -4,9 +4,15 @@ class AutumnController < ApplicationController
 
   def index
     @autumns = Autumn.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
+    @comment = @autumn.comments.build
+    @comments = @autumn.comments
   end
 
   def new
@@ -18,16 +24,20 @@ class AutumnController < ApplicationController
   end
 
   def create
-    @autumn = Autumn.new(autumns_params)
+    @autumn = current_user.autumns.build(autumns_params)
+    if params[:cache][:image].present?
+      @autumn.image.retrieve_from_cache! params[:cache][:image]
+    end
     # respond_to do |format|
     if @autumn.save
       # format.html { redirect_to @warmspring, notice: 'warmspring was successfully created.' }
       #     format.json { render :show, status: :created, location: @blog }
       redirect_to autumn_index_path, notice: "ブログを作成しました！"
-      #   else
+      NoticeMailer.sendmail_autumn(@autumn).deliver
+    else
       #     format.html { render :new }
       #     format.json { render json: @blog.errors, status: :unprocessable_entity }
-      # render 'new'
+      render 'new'
       # end
     end
   end
@@ -61,13 +71,13 @@ class AutumnController < ApplicationController
   end
 
   def confirm
-    @autumn = Autumn.new(autumns_params)
+    @autumn = current_user.autumns.build(autumns_params)
     render :new if @autumn.invalid?
   end
 
   private
   def autumns_params
-    params.require(:autumn).permit(:title, :content)
+    params.require(:autumn).permit(:title, :content, :image)
   end
 
   def set_autumn

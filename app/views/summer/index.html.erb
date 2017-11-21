@@ -1,24 +1,34 @@
 <div class="container">
   <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1-blog">
     <p id="notice"><%= notice %></p>
-    <!--     <div class=blog main> -->
-    <h1>投稿一覧</h1>
-  </div>
-  <% @summers.each do |summer| %>
-    <!--       <div class="box23">
+    <div class=blog main>
+      <h1>投稿一覧</h1>
+      <%= link_to "写真を投稿する", new_summer_path, class: 'square_btn' %>
+    </div>
+    <% @summers.each do |summer| %>
+      <div class="box23">
         <p>気に入ったら、⭐️ボタンを押してね！</p>
-      </div> -->
-    <!--       <div class="row-blogs"> -->
-    <p>タイトル:<%= summer.title %></p>
-    <!--         <div class="img src-picture">
-        </div> -->
-    <p>説明:<%= summer.content %></p>
-    <!--         <div class="blog buttun"> -->
-    <%= link_to "編集", edit_summer_path(summer.id), class: 'btn btn-default btn-sm btn-primary', data: { confirm: '本当に編集してもいいですか？' } %>
-    <%= link_to "削除", summer_path(summer.id), method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: 'btn btn-default btn-sm btn btn-danger' %>
-    <!--         </div> -->
-    <!--       </div> -->
-  <% end %>
-</div>
-</div>
-<%= link_to 'ブログを作成する', new_summer_path %>
+      </div>
+      <div class="row-blogs">
+        <p>名前:<%= summer.user.name%></p>
+        <p>タイトル:<%= summer.title %></p>
+        <div class="img src-picture">
+          <%#= link_to top5_blogs_path do %>
+            <%= image_tag summer.image %>
+            <%# end %>
+          </div>
+          <p>説明:<%= summer.content %></p>
+          <div class="blog buttun">
+            <% if current_user == summer.user %>
+              <%= link_to "編集", edit_summer_path(summer.id), class: 'btn btn-default btn-sm btn-primary', data: { confirm: '本当に編集してもいいですか？' } %>
+              <%= link_to "削除", summer_path(summer.id), method: :delete, data: { confirm: '本当に削除してもいいですか？' }, class: 'btn btn-default btn-sm btn btn-danger' %>
+            <% end %>
+          </div>
+        </div>
+        <div id="comments_area<%= summer.id %>">
+          <%= render partial: 'summer_comments/index', locals: { comments: summer.summer_comments, summer: summer } %>
+        </div>
+        <%= render partial: 'summer_comments/form', locals: { comment: summer.summer_comments.build, summer: summer } %>
+      <% end %>
+    </div>
+  </div>

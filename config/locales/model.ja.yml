@@ -8,6 +8,18 @@ ja:
       blog:
         title: "タイトル"
         content: "内容"
+      warmspring:
+        title: "タイトル"
+        content: "内容"
+      summer:
+        title: "タイトル"
+        content: "内容"
+      autumn:
+        title: "タイトル"
+        content: "内容"
+      winter:
+        title: "タイトル"
+        content: "内容"
       contact:
         name: "名前"
         email: "メールアドレス"

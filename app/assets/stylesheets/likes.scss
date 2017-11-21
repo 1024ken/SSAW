@@ -1,0 +1,72 @@
+// Place all the styles related to the likes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.star {
+  width: 25%;
+  margin-left: 6%;
+}
+
+.star-rating {
+  position: relative;
+  width: 5em;
+  height: 1em;
+  font-size: 25px;
+}
+
+.star-rating-front {
+margin: -12px;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 21px solid #f2c820;
+    display: block;
+    height: 0;
+    width: 0;
+    position: relative;
+    animation:
+        anim-star-fav-rotate 10s linear infinite,
+        anim-star-fav-opacity 1s linear infinite
+    ;
+}
+.star-rating-front:before,
+.star-rating-front:after {
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 21px solid #f2c820;
+    content: '';
+    display: block;
+    height: 0;
+    left: -31px;
+    position: absolute;
+    top: 0;
+    width: 0;
+}
+.star-rating-front:before {
+    transform: rotate(71deg);
+}
+.star-rating-front:after {
+    transform: rotate(-71deg);
+}
+@keyframes anim-star-fav-rotate {
+    from { transform: rotate(35deg);}
+    to { transform: rotate(395deg);}
+}
+@keyframes anim-star-fav-opacity {
+    0%   { opacity: 1;}
+    50%  { opacity: 0.5;}
+    100% { opacity: 1;}
+}
+
+.star-rating-front:hover {
+  text-decoration: none;
+}
+
+.star-rating-back {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.star-rating-back:hover {
+  text-decoration: none;
+}

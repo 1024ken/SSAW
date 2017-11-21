@@ -1,0 +1,11 @@
+<div class= star>
+  <div id= <%= "like-link-#{warmspring.id}" %> >
+    <% if warmspring.likes.find_by(user_id: current_user.id) %>
+      <%= link_to "", unlike_path(warmspring.id), method: :delete, remote: true, class: "star-rating-front" %>
+      <%= warmspring.likes.count.to_s %>
+    <% else %>
+      <%= link_to "★", like_path(warmspring.id), method: :post, remote: true, class: "star-rating-back" %>
+      <%= warmspring.likes.count.to_s %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+$("#comments_area<%= @comment.warmspring.id %>").html("<%= j(render 'warmspring_comments/index', { comments: @comment.warmspring.warmspring_comments, warmspring: @comment.warmspring }) %>")
+$(':text').val('')

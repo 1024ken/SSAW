@@ -4,14 +4,22 @@
     <%= form_for(@summer, url: summer_index_path, method: 'post') do |f| %>
       <%= f.hidden_field :title %>
       <%= f.hidden_field :content %>
-      <p>タイトル:<%= @summer.title %></p>
-      <p>本文:<%= @summer.content %></p>
-      <%= f.submit "登録する" %>
+      <div class="title-confirm">
+        <p>タイトル:<%= @summer.title %></p>
+      </div>
+      <div class="image-confirm">
+        <%= image_tag(@summer.image) %>
+      </div>
+      <%= hidden_field_tag :"cache[image]", @summer.image.cache_name %>
+      <div class="content-confirm">
+        <p>本文:<%= @summer.content %></p>
+      </div>
+      <%= f.submit "登録", class: "btn btn-primary btn-block-confirm" %>
     <% end %>
     <%= form_for(@summer, url: new_summer_path, method: 'get') do |f| %>
       <%= f.hidden_field :title %>
       <%= f.hidden_field :content %>
-      <%= f.submit "もどる", name: 'back' %>
+      <%= f.submit "戻る", name: 'back' %>
     <% end %>
   </div>
 </div>

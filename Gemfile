@@ -39,6 +39,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'carrierwave'
+gem 'mini_magick'
 gem "paperclip"
 gem 'therubyracer'
 gem 'twitter-bootstrap-rails'

@@ -4,9 +4,15 @@ class WinterController < ApplicationController
 
   def index
     @winters = Winter.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
+    @comment = @winter.comments.build
+    @comments = @winter.comments
   end
 
   def new
@@ -18,16 +24,20 @@ class WinterController < ApplicationController
   end
 
   def create
-    @winter = Winter.new(winters_params)
+    @winter = current_user.winters.build(winters_params)
+    if params[:cache][:image].present?
+      @winter.image.retrieve_from_cache! params[:cache][:image]
+    end
     # respond_to do |format|
     if @winter.save
       # format.html { redirect_to @warmspring, notice: 'warmspring was successfully created.' }
       #     format.json { render :show, status: :created, location: @blog }
       redirect_to winter_index_path, notice: "ブログを作成しました！"
-      #   else
+      NoticeMailer.sendmail_winter(@winter).deliver
+    else
       #     format.html { render :new }
       #     format.json { render json: @blog.errors, status: :unprocessable_entity }
-      # render 'new'
+      render 'new'
       # end
     end
   end
@@ -61,13 +71,13 @@ class WinterController < ApplicationController
   end
 
   def confirm
-    @winter = Winter.new(winters_params)
+    @winter = current_user.winters.build(winters_params)
     render :new if @winter.invalid?
   end
 
   private
   def winters_params
-    params.require(:winter).permit(:title, :content)
+    params.require(:winter).permit(:title, :content, :image)
   end
 
   def set_winter
