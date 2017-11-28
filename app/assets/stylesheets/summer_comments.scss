@@ -1,3 +1,23 @@
 // Place all the styles related to the Summer_comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.summer_comment {
+    position: relative;
+    padding: 0.5em 0.7em;
+    margin: 2em 0;
+    background: #E6E6FA;
+    border-radius: 2px;
+    color: #696969;
+    font-weight: bold;
+}
+.summer_comment:after {
+    position: absolute;
+    content: '';
+    top: 100%;
+    left: 30px;
+    border: 15px solid transparent;
+    border-top: 15px solid #E6E6FA;
+    width: 0;
+    height: 0;
+}

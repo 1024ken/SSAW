@@ -75,6 +75,14 @@ class WarmspringController < ApplicationController
     render :new if @warmspring.invalid?
   end
 
+  def ranking
+    @warmspring = Warmspring.ranking
+    respond_to do |format|
+      format.html
+      format.json { render json: @warmspring }
+    end
+  end
+
   private
   def warmsprings_params
     params.require(:warmspring).permit(:title, :content, :image)

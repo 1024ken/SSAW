@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :warmspring_comments
     collection do
       post :confirm
+      get :ranking
     end
   end
 
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
     resources :summer_comments
     collection do
       post :confirm
+      get :ranking
     end
   end
 
@@ -22,6 +24,7 @@ Rails.application.routes.draw do
     resources :autumn_comments
     collection do
       post :confirm
+      get :ranking
     end
   end
 
@@ -29,20 +32,15 @@ Rails.application.routes.draw do
     resources :winter_comments
     collection do
       post :confirm
+      get :ranking
     end
   end
 
-  post '/like/:warmspring_id' => 'likes#like', as: 'like'
-  delete '/like/:warmspring_id' => 'likes#unlike', as: 'unlike'
+  resources :all_ranking, only: [:index] do
+  end
 
-  # post '/like/:summer_id' => 'likes#like', as: 'like'
-  # delete '/like/:summer_id' => 'likes#unlike', as: 'unlike'
-
-  # post '/like/:autumn_id' => 'likes#like', as: 'like'
-  # delete '/like/:autumn_id' => 'likes#unlike', as: 'unlike'
-
-  # post '/like/:winter_id' => 'likes#like', as: 'like'
-  # delete '/like/:winter_id' => 'likes#unlike', as: 'unlike'
+  post '/like/:season_id' => 'likes#like', as: 'like'
+  delete '/like/:season_id' => 'likes#unlike', as: 'unlike'
 
   resources :relationships, only: [:create, :destroy]
 

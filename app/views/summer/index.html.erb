@@ -18,6 +18,7 @@
             <%# end %>
           </div>
           <p>説明:<%= summer.content %></p>
+          <%= render 'likes/like', season: summer %>
           <div class="blog buttun">
             <% if current_user == summer.user %>
               <%= link_to "編集", edit_summer_path(summer.id), class: 'btn btn-default btn-sm btn-primary', data: { confirm: '本当に編集してもいいですか？' } %>
